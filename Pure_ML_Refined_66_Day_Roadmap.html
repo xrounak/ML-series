@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pure ML — Refined 66-Day Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef2f6;--card:#fff;--ink:#14213d;--mute:#5b6778;--line:#d5dce6;color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0f1622;--card:#182232;--ink:#e6ecf5;--mute:#93a1b5;--line:#2a374b;color-scheme:dark}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Bricolage Grotesque",system-ui,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+header{padding:56px 0 28px}h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.02;margin:0 0 14px;font-weight:800;letter-spacing:-.03em}
+header p{max-width:70ch;color:var(--mute);margin:0 0 22px;font-size:1.05rem}
+.prog{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.bar{flex:1;min-width:180px;height:10px;background:var(--line);border-radius:9px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:hsl(172 70% 34%);transition:width .3s}
+.tools{position:sticky;top:0;z-index:5;background:var(--bg);padding:12px 0;border-bottom:1px solid var(--line)}
+.tools .wrap{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+input[type=search]{flex:1;min-width:200px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit}
+.chips{display:flex;gap:6px;flex-wrap:wrap}button{font:inherit;cursor:pointer;color:var(--ink)}
+.chip{padding:5px 11px;border-radius:99px;border:1px solid var(--line);background:var(--card);font-size:.85rem}
+.chip[aria-pressed=true]{background:hsl(var(--h,215) 55% 34%);border-color:transparent;color:#fff}
+:focus-visible{outline:3px solid hsl(200 90% 50%);outline-offset:2px}
+.mod{margin:38px 0 0;--c:hsl(var(--h) 55% 38%)}@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .mod{--c:hsl(var(--h) 60% 62%)}}
+.mod h2{margin:0;font-size:1.55rem;letter-spacing:-.02em;color:var(--c)}.mod .sub{color:var(--mute);margin:2px 0 14px;max-width:72ch}
+details{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--c);border-radius:10px;margin:8px 0}
+summary{list-style:none;display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer}summary::-webkit-details-marker{display:none}
+.n{font-weight:800;color:var(--c);min-width:3.2ch;font-variant-numeric:tabular-nums}.t{font-weight:600;flex:1}
+.ck{width:20px;height:20px;accent-color:hsl(172 70% 34%);cursor:pointer}details.done .t{text-decoration:line-through;color:var(--mute)}
+.body{padding:0 14px 14px 60px;color:var(--mute)}.body ul{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.body li{background:var(--bg);border:1px solid var(--line);border-radius:7px;padding:2px 9px;font-size:.88rem;color:var(--ink)}
+.badge{font-size:.72rem;border:1px solid var(--line);padding:2px 7px;border-radius:99px;color:var(--mute);white-space:nowrap}
+.badge.core{border-color:hsl(172 70% 34%);color:hsl(172 70% 34%)}.badge.deep{border-color:hsl(285 45% 45%);color:hsl(285 45% 45%)}.badge.build{border-color:hsl(35 75% 40%);color:hsl(35 75% 40%)}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:14px 0}.flow span{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:4px 10px;font-size:.88rem}.flow b{color:var(--mute)}
+section.info{margin:56px 0 0}section.info h2{font-size:1.5rem;letter-spacing:-.02em;margin:0 0 10px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}.box h3{margin:0 0 8px;font-size:1.05rem}.box ul,.box ol{margin:0;padding-left:1.2em}.box li{margin:3px 0}
+code{font:.88em ui-monospace,Menlo,monospace;background:var(--bg);padding:1px 5px;border-radius:5px}footer{padding:48px 0 60px;color:var(--mute);font-size:.9rem}.hide{display:none}
+@media(max-width:560px){.body{padding-left:14px}.badge{display:none}}@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>Pure ML from Scratch to Production</h1>
+<p>66 learning sessions, one evolving ML system, and the same original classical/tabular ML scope — refined so overloaded topics get room, leakage stays visible throughout, and production concepts are not crammed into a single ending.</p>
+<div class="prog"><div class="bar"><i id="fill"></i></div><span id="count">0 / 66 recorded</span></div>
+</div></header>
+
+<div class="tools"><div class="wrap">
+<input type="search" id="q" placeholder="Search topics, e.g. SMOTE, VIF, SHAP" aria-label="Search videos">
+<div class="chips" id="chips"></div>
+</div></div>
+
+<main class="wrap">
+<div class="flow" aria-label="Learning flow" style="margin-top:22px"></div>
+<div id="mods"></div>
+
+<section class="info">
+<h2>How to run every session</h2>
+<div class="cols">
+<div class="box"><h3>Five questions</h3><ol>
+<li>What problem does this solve?</li><li>What is the mathematical intuition?</li><li>How does it actually work?</li><li>When should I use it?</li><li>What can go wrong?</li>
+</ol></div>
+<div class="box"><h3>Sixth question: did it help?</h3><p>After every implementation, ask: <b>Did this actually improve the relevant validation result?</b> Keep the comparison against a baseline.</p></div>
+<div class="box"><h3>Notebook layout</h3><ul>
+<li><code>01_problem_statement</code></li><li><code>02_data_loading</code></li><li><code>03_data_audit</code></li><li><code>04_experiment</code></li><li><code>05_evaluation</code></li><li><code>06_results</code></li><li><code>07_conclusion</code></li>
+</ul></div>
+<div class="box"><h3>Daily schedule</h3><ul>
+<li>3:00–5:30 PM: study / understand</li><li>7:00–8:30 PM: notebook / implementation</li><li>10:30–11:20 PM: Excalidraw + walkthrough + optional one-take recording</li>
+<li>Heavy sessions may use the next day's block; don't rush a concept to protect the calendar.</li>
+</ul></div>
+<div class="box"><h3>Three running datasets</h3><ul>
+<li><b>A — regression:</b> EDA, preprocessing, linear models, trees, boosting, deployment</li>
+<li><b>B — classification:</b> logistic, KNN, NB, SVM, forests, boosting, calibration, imbalance, thresholds</li>
+<li><b>C — unsupervised:</b> K-Means, DBSCAN, GMM, PCA, anomaly detection</li>
+<li>Small external datasets only when a concept needs a different data shape.</li>
+</ul></div>
+<div class="box"><h3>Core rule</h3><p><b>If it learns from data, it belongs inside the training/CV process.</b> This applies to imputation, scaling, encoding, target encoding, feature selection, PCA, SMOTE and model fitting.</p></div>
+<div class="box"><h3>What was refined</h3><ul>
+<li>Original 60 topics retained, but overloaded sessions split into focused sessions.</li>
+<li>Regression diagnostics separated from the heaviest metric load.</li>
+<li>Calibration/thresholds and hyperparameter optimization expanded.</li>
+<li>XGBoost internals and library comparison given room.</li>
+<li>Unsupervised topics separated before production.</li>
+<li>Production split into pipeline, API, Docker/MLflow and monitoring.</li>
+<li>PSI treated as a monitoring method, not a fourth drift type.</li>
+<li>Data-quality monitoring and label-delay considerations added.</li>
+</ul></div>
+<div class="box"><h3>Excluded</h3><ul>
+<li>Neural networks and deep learning</li><li>CNNs, RNNs, LSTMs, Transformers</li><li>Computer vision</li><li>LLMs, NLP modeling, generative AI</li>
+</ul></div>
+</div>
+</section>
+
+<section class="info">
+<h2>After day 66</h2>
+<p style="color:var(--mute);max-width:68ch">Given a messy CSV, the learner should be able to frame the prediction problem, choose a valid split, audit and clean the data, engineer and select features without leakage, establish a baseline, choose and tune models, validate with the right metric, diagnose failure, interpret and calibrate predictions, then package the system, expose <code>/predict</code>, containerize it, track versions and monitor degradation.</p>
+</section>
+</main>
+
+<footer><div class="wrap">Refined from the original 60-session plan; the extra six sessions are used only where the original scope was unusually dense.</div></footer>
+
+<script>
+const M=[
+["Module 1: ML Problem Framing & Data Audit","What are we predicting, with what information, and how will we know it is useful?",215,[
+["From Business Problem to ML Problem","supervised vs unsupervised,regression vs classification,features & target,prediction horizon,information available at prediction time,ML vs business objective","core"],
+["Dataset Anatomy & Data Audit","shape/info/describe,dtypes,cardinality,duplicates,constant & ID columns,memory usage,target inspection","core"],
+["Train / Validation / Test Splitting","holdout,stratified split,group split,time-based split,when random split is invalid,random_state","core"],
+["Baseline Models","mean/median/majority predictors,DummyRegressor,DummyClassifier,business baseline,baseline before complexity","core"],
+["Data Leakage I — Core Patterns","target leakage,train-test contamination,temporal leakage,duplicate leakage,split first","deep"],
+["Data Leakage II — Hidden Leakage","preprocessing,feature-selection,target-encoding,aggregation leakage,fit learned transformers on train only,leakage inside CV","deep"]
+]],
+["Module 2: EDA & Statistical Understanding","Look at the data before modeling it, and turn observations into hypotheses.",260,[
+["Univariate Numerical EDA","mean/median/mode,variance,quantiles,IQR,histograms,KDE,box plots,skewness,kurtosis","core"],
+["Univariate Categorical EDA","frequency tables,count plots,cardinality,rare & long-tail categories,category imbalance","core"],
+["Bivariate & Multivariate EDA","scatter,groupby,pair plots,correlation heatmaps,num-num,num-cat,cat-cat","core"],
+["Statistical Testing","hypotheses,p-value,confidence interval,Type I/II errors,chi-square,t-test,ANOVA,Pearson/Spearman,practical vs statistical significance","deep"],
+["Automated EDA","YData Profiling,Sweetviz,what automation cannot tell you,EDA → modeling hypotheses","core"]
+]],
+["Module 3: Data Cleaning & Preprocessing","One coherent preprocessing flow, always fitted on training data only.",172,[
+["Missing Data: MCAR, MAR, MNAR","mechanisms,missing %,missing indicators,mean/median/mode,deletion,missingness as information","core"],
+["KNN & Iterative Imputation","KNNImputer,IterativeImputer / MICE,multivariate imputation,imputation inside CV","deep"],
+["Outlier Detection","IQR rule,z-score,robust statistics,Isolation Forest,global vs contextual,delete/cap/transform/keep,winsorization","core"],
+["Scaling vs Normalization","StandardScaler,MinMaxScaler,RobustScaler,L1/L2 sample normalization,why KNN/SVM/logistic care,why trees do not","core"],
+["Skewness & Power Transformations","log,sqrt,reciprocal,Box-Cox,Yeo-Johnson,quantile transform,decision framework,when transformation helps","deep"],
+["Datetime & Structured Metadata","date parts,weekday/hour,elapsed time,recency,frequency,string length,cyclical sin/cos,basic string metadata without NLP","core"],
+["Temporal Features & Lookahead Bias","lag features,t-1/t-7,rolling mean/std,expanding windows,feature availability at prediction time,avoid lookahead bias","deep"]
+]],
+["Module 4: Feature Engineering & Selection","Build better inputs, then drop the ones that do not earn their place.",32,[
+["Categorical Encoding","one-hot,dummy variable trap,ordinal,unknown categories,rare categories,high cardinality,frequency encoding","core"],
+["Target Encoding Without Leakage","mean encoding,smoothing,leave-one-out,K-fold target encoding,train vs validation encoding,cross-fitting","deep"],
+["Feature Construction & Interactions","ratios,differences,aggregations,domain features,polynomial,interactions,binning,lag & rolling aggregations,lookahead check","core"],
+["Filter Feature Selection","variance threshold,Pearson,Spearman,chi-square,ANOVA F-test,mutual information,selection inside CV","core"],
+["Wrapper & Embedded Selection","RFE,RFECV,sequential selector,Lasso,SelectFromModel,tree importance,selection inside pipeline","deep"],
+["Multicollinearity & VIF","correlated predictors,VIF = 1/(1−R²),coefficient instability,pruning,Ridge as alternative,selection vs regularization","deep"]
+]],
+["Module 5: Core Math & Optimization","Loss → objective → optimization, then reuse the ideas when models appear.",285,[
+["Loss & Cost Functions","MSE,MAE,Huber,log loss,binary cross-entropy,loss vs business cost","deep"],
+["Gradient Descent From Scratch","partial derivatives,gradient,learning rate,update rule,convexity,convergence,feature scaling","deep"],
+["Batch vs SGD vs Mini-Batch","noise,convergence,computational tradeoffs,vectorization,when each makes sense","core"],
+["Regularization & Optimization","underfitting,overfitting,L1,L2,Elastic Net,shrinkage,sparsity,regularization intuition","deep"]
+]],
+["Module 6: Regression Algorithms","From closed-form OLS to sparse, regularized models, with real diagnostics.",15,[
+["Linear Regression & OLS","simple & multiple,normal equation,OLS assumptions,computational complexity,first Pipeline: scaler + model,no manual fit_transform","core"],
+["Linear Regression From Scratch","NumPy only,forward pass,MSE,gradient,update,convergence,compare with scikit-learn","build"],
+["Polynomial Regression","PolynomialFeatures,degree,non-linearity,bias/variance,overfitting,degree selection","core"],
+["Splines","spline features,knots,local flexibility,polynomial vs spline,when splines help","deep"],
+["Ridge Regression","L2 penalty,weight shrinkage,closed form,geometry,effect of λ,coefficient stability","deep"],
+["Lasso & Elastic Net","L1 penalty,sparsity,coordinate descent,feature selection,L1+L2 mix,l1_ratio,why ElasticNet can be preferable with correlated features","deep"],
+["Regression Metrics","MAE,RMSE,R²,adjusted R²,MAPE limitations,median AE,metric selection","core"],
+["Regression Diagnostics","residual plots,heteroscedasticity,leverage points,influential observations,diagnose before changing model","deep"]
+]],
+["Module 7: Classification Algorithms","Probabilistic, distance-based and margin-based classifiers.",340,[
+["Logistic Regression Mathematics","odds,log-odds,sigmoid,maximum likelihood,cross entropy,probability output,decision boundary","deep"],
+["Logistic Regression From Scratch","NumPy,z=Xw+b,sigmoid,BCE,gradient,update,compare with scikit-learn","build"],
+["Multiclass Classification","one-vs-rest,one-vs-one,multinomial,softmax,probabilities vs class labels","core"],
+["K-Nearest Neighbors","Euclidean/Manhattan/Minkowski,choosing K,scaling,curse of dimensionality,KD-tree,Ball-tree,training vs prediction cost","core"],
+["Naive Bayes","Bayes theorem,conditional independence,Gaussian NB,Multinomial NB,Bernoulli NB,why the assumption can still work","core"],
+["SVM: Maximum Margin","hyperplane,support vectors,hard/soft margin,slack variables,C,hinge loss","deep"],
+["Kernel Trick","linear,polynomial,RBF,gamma,nonlinear boundaries,C vs gamma intuition","deep"]
+]],
+["Module 8: Evaluation, Tuning & Interpretation","Where good practitioners separate themselves from tutorial followers.",200,[
+["Cross-Validation","K-Fold,Stratified,Repeated,GroupKFold,StratifiedGroupKFold,TimeSeriesSplit,LOOCV,choosing the split strategy","core"],
+["Classification Metrics","confusion matrix,accuracy,precision,recall,specificity,F1,macro/micro/weighted,balanced accuracy","core"],
+["ROC-AUC vs PR-AUC + Class Imbalance","TPR/FPR,ROC curve,precision-recall curve,average precision,rare positive classes,what AUC measures","deep"],
+["Imbalance Strategies","random under/oversampling,SMOTE,class_weight=balanced,scale_pos_weight,SMOTE only inside training/CV","deep"],
+["Calibration Fundamentals","predict vs predict_proba,reliability diagram,Brier score,discrimination vs calibration","deep"],
+["Calibration Methods","Platt scaling,isotonic calibration,when calibration helps,validation without contaminating final test set","deep"],
+["Thresholds & Cost Matrices","move threshold off 0.5,cost of FP vs FN,business loss,optimize threshold without using final test set","deep"],
+["Bias-Variance & Learning Curves","error decomposition,learning curves,validation curves,data size,model complexity,diagnosing under/overfitting","core"],
+["Hyperparameter Search","grid,random search,successive halving,tuning vs evaluation,nested CV","deep"],
+["Bayesian Optimization & Optuna","Bayesian optimization intuition,Optuna,search-space design,early stopping/pruning,when advanced tuning is worth it","deep"],
+["Model Interpretation","coefficients,permutation importance,MDI,PDP,ICE,SHAP concept,global vs local,correlated-feature caveats","deep"]
+]],
+["Module 9: Trees, Bagging & Boosting","The modern tabular ML core — with enough time for the internals.",135,[
+["Decision Trees: Classification","CART,Gini,entropy,information gain,recursive splitting,stopping conditions,weighted child impurity","core"],
+["Decision Trees: Regression & Pruning","variance reduction,max_depth,min_samples_split/leaf,pre-pruning,cost-complexity pruning","core"],
+["Bagging & Random Forest","bootstrap,feature subsampling,variance reduction,OOB evaluation,bagging intuition","core"],
+["Extra Trees & Feature Importance","random split thresholds,RF vs Extra Trees,MDI vs permutation,high-cardinality bias","core"],
+["AdaBoost & Gradient Boosting","sample weighting,exponential loss,residuals,negative gradient,learning rate,shrinkage,bagging vs boosting","deep"],
+["XGBoost Internals I","gradient & Hessian,second-order Taylor approximation,objective decomposition,split gain intuition","deep"],
+["XGBoost Internals II","γ/λ/α,row/column subsampling,histogram trees,native NaN handling,default split direction","deep"],
+["XGBoost vs LightGBM vs CatBoost","leaf-wise growth,num_leaves,histograms,ordered target statistics,symmetric trees,native categoricals,missing values,practical trade-offs","deep"]
+]],
+["Module 10: Ensembles, Unsupervised ML","Clusters, anomaly detection and dimensionality reduction deserve their own space.",48,[
+["Voting & Stacking","hard/soft/weighted voting,meta-learner,out-of-fold predictions,stacking leakage","core"],
+["K-Means & K-Means++","centroids,WCSS,Lloyd's algorithm,initialization,elbow method,assumptions,scaling","core"],
+["Hierarchical Clustering","linkage,dendrograms,agglomerative clustering,choosing cut level","core"],
+["DBSCAN","epsilon,min_samples,core/border/noise points,non-spherical clusters,scaling","core"],
+["GMM & EM","soft assignments,Gaussian mixtures,EM intuition,K-Means vs GMM","deep"],
+["Anomaly Detection","Isolation Forest,outlier detection vs novelty detection,training data assumptions","deep"],
+["Cluster Evaluation","silhouette,Davies-Bouldin,Calinski-Harabasz,metric limitations,visual inspection","core"],
+["PCA I — Geometry","centering,covariance,eigenvectors,principal directions,projection intuition","deep"],
+["PCA II — Practice","explained variance,scree plot,component selection,whitening,PCA inside pipeline,leakage","deep"]
+]],
+["Module 11: Production ML","From notebook to an API without treating deployment as an afterthought.",48,[
+["Production Pipeline + ColumnTransformer","Pipeline,ColumnTransformer,production-grade preprocessing,custom transformers,learned transformations inside pipeline","build"],
+["Serialization + Reproducibility","joblib,dependency versions,Python/sklearn compatibility,feature schema,model metadata,reproducible environments","build"],
+["FastAPI + Prediction Contract","POST /predict,Pydantic,schema validation,input types,missing/extra columns,model_version","build"],
+["Docker","Dockerfile,base image,dependencies,build/run,test container,local API deployment","build"],
+["MLflow","experiment tracking,parameters,metrics,artifacts,model registry,model version vs experiment version","build"],
+["Monitoring I — Data Quality & Drift","missingness,unexpected categories,range/cardinality changes,data freshness,covariate shift,PSI as a monitoring method","deep"],
+["Monitoring II — Prediction & Performance Drift","prediction distribution,prior/label shift,delayed labels,performance monitoring,concept drift P(Y|X)","deep"],
+["Retraining, Rollback & Production Loop","monitor → investigate → candidate retrain → validate → deploy → monitor → rollback,retraining triggers,drift does not automatically mean retrain","build"]
+]],
+["Module 12: Integration & Mastery","Use the system rather than merely finishing the syllabus.",172,[
+["End-to-End System Walkthrough","messy CSV → framing → audit → split → preprocessing → features → baseline → model → validation → tuning → interpretation → packaging","build"],
+["End-to-End Classification Case","problem framing,imbalance,metric choice,threshold,calibration,final test discipline","build"],
+["End-to-End Regression Case","baseline,feature engineering,model comparison,metrics,residual diagnostics,final selection","build"],
+["Debugging Day","leakage,wrong split,preprocessing outside CV,SMOTE before split,overfitting,metric mismatch,broken production schema","deep"],
+["Interview Theory Day","explain 30 high-value concepts without notes,math intuition,trade-offs,when not to use a method","core"],
+["Final Project + One-Take Walkthrough","explain the entire system in one sitting,show architecture,experiments,results,limitations,monitoring plan","build"]
+]]
+];
+
+const flow="Framing,Audit,Split,EDA,Cleaning,Features,Math,Regression,Classification,Validation,Tuning,Trees & Boosting,Unsupervised,Pipeline,FastAPI,Docker,Tracking,Monitoring,Integration".split(",");
+document.querySelector(".flow").innerHTML=flow.map(s=>"<span>"+s+"</span>").join("<b>→</b>");
+
+let done={};try{done=JSON.parse(localStorage.getItem("pureml-refined-66-done")||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem("pureml-refined-66-done",JSON.stringify(done))}catch(e){}};
+const mods=document.getElementById("mods"),chips=document.getElementById("chips");
+let n=0,active=-1;
+const all=document.createElement("button");all.className="chip";all.textContent="All modules";all.setAttribute("aria-pressed","true");
+all.onclick=()=>setMod(-1);chips.appendChild(all);
+
+M.forEach((m,i)=>{
+  const s=document.createElement("section");s.className="mod";s.style.setProperty("--h",m[2]);s.dataset.i=i;
+  const first=n+1,last=n+m[3].length;
+  s.innerHTML="<h2></h2><p class='sub'></p>";
+  s.querySelector("h2").textContent=m[0]+" (sessions "+first+"–"+last+")";
+  s.querySelector(".sub").textContent=m[1];
+  m[3].forEach(v=>{
+    n++;const id=n;
+    const d=document.createElement("details");d.dataset.id=id;d.dataset.text=(v[0]+" "+v[1]+" "+v[2]).toLowerCase();
+    if(done[id])d.classList.add("done");
+    const sm=document.createElement("summary");
+    sm.innerHTML="<span class='n'></span><span class='t'></span><span class='badge'></span><input type='checkbox' class='ck'>";
+    sm.querySelector(".n").textContent=id;sm.querySelector(".t").textContent=v[0];
+    const badge=sm.querySelector(".badge");badge.textContent=v[2]==="core"?"Core":v[2]==="deep"?"Deep dive":"Build";badge.classList.add(v[2]);
+    const ck=sm.querySelector(".ck");ck.checked=!!done[id];ck.title="Mark as completed";ck.setAttribute("aria-label","Mark session "+id+" completed");
+    ck.onclick=e=>e.stopPropagation();ck.onchange=()=>{done[id]=ck.checked;if(!ck.checked)delete done[id];d.classList.toggle("done",ck.checked);save();upd()};
+    d.appendChild(sm);
+    const b=document.createElement("div");b.className="body";const ul=document.createElement("ul");
+    v[1].split(",").forEach(t=>{const li=document.createElement("li");li.textContent=t.trim();ul.appendChild(li)});
+    b.appendChild(ul);d.appendChild(b);s.appendChild(d);
+  });
+  mods.appendChild(s);
+  const c=document.createElement("button");c.className="chip";c.style.setProperty("--h",m[2]);c.textContent="M"+(i+1);c.title=m[0];
+  c.setAttribute("aria-pressed","false");c.onclick=()=>setMod(i);chips.appendChild(c);
+});
+
+function setMod(i){active=i;[...chips.children].forEach((c,k)=>c.setAttribute("aria-pressed",String(k===i+1)));filter()}
+function filter(){
+ const q=document.getElementById("q").value.trim().toLowerCase();
+ document.querySelectorAll(".mod").forEach(s=>{
+  let any=false;s.querySelectorAll("details").forEach(d=>{const ok=!q||d.dataset.text.includes(q);d.classList.toggle("hide",!ok);if(ok)any=true;if(q&&ok)d.open=true;else if(!q)d.open=false});
+  s.classList.toggle("hide",!any||(active>=0&&+s.dataset.i!==active));
+ });
+}
+function upd(){const c=Object.keys(done).length;document.getElementById("count").textContent=c+" / 66 recorded";document.getElementById("fill").style.width=(c/66*100)+"%"}
+document.getElementById("q").addEventListener("input",filter);upd();
+</script>
+</body>
+</html>
